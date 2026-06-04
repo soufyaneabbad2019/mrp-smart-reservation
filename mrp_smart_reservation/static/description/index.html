@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ef;
+    --accent: #e8611a;
+    --accent2: #f5a623;
+    --muted: #888;
+    --card: #111;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 520px;
+    background: var(--black);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 80px 60px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(232,97,26,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 30%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,97,26,0.15);
+    border: 1px solid rgba(232,97,26,0.3);
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    max-width: 700px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 span {
+    color: var(--accent);
+    position: relative;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: #aaa;
+    max-width: 520px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: #ccc;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 2px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-visual {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+  }
+
+  /* ─── PROBLEM SECTION ─── */
+  .section {
+    padding: 80px 60px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+
+  /* ─── PROBLEM SCENARIO ─── */
+  .scenario {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid #e53e3e;
+    padding: 32px 40px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scenario::before {
+    content: '⚠';
+    position: absolute;
+    right: 24px; top: 20px;
+    font-size: 28px;
+    opacity: 0.15;
+  }
+
+  .scenario-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e53e3e;
+    margin-bottom: 12px;
+  }
+
+  .scenario p {
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .scenario strong {
+    color: var(--white);
+  }
+
+  .solution-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid #38a169;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .solution-box::before {
+    content: '✓';
+    position: absolute;
+    right: 24px; top: 20px;
+    font-size: 28px;
+    opacity: 0.15;
+    color: #38a169;
+  }
+
+  .solution-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #38a169;
+    margin-bottom: 12px;
+  }
+
+  /* ─── PRIORITY TABLE ─── */
+  .priority-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .priority-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .priority-card:hover {
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .priority-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.07;
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    letter-spacing: -4px;
+  }
+
+  .priority-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .badge-forced { background: rgba(229,62,62,0.15); color: #fc8181; border: 1px solid rgba(229,62,62,0.3); }
+  .badge-urgent { background: rgba(56,161,105,0.15); color: #68d391; border: 1px solid rgba(56,161,105,0.3); }
+  .badge-distant { background: rgba(237,137,54,0.15); color: #f6ad55; border: 1px solid rgba(237,137,54,0.3); }
+
+  .priority-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .priority-card p {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* ─── FEATURES ─── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .feature-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: background 0.3s;
+  }
+
+  .feature-item:hover {
+    background: #161616;
+  }
+
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(232,97,26,0.1);
+    border: 1px solid rgba(232,97,26,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+
+  .feature-item h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .feature-item p {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* ─── BEFORE / AFTER ─── */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .comp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 36px;
+  }
+
+  .comp-card.before { border-top: 2px solid #e53e3e; }
+  .comp-card.after  { border-top: 2px solid #38a169; }
+
+  .comp-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .comp-card.before .comp-label { color: #e53e3e; }
+  .comp-card.after  .comp-label { color: #38a169; }
+
+  .comp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #bbb;
+    line-height: 1.6;
+  }
+
+  .comp-icon { flex-shrink: 0; font-size: 16px; }
+
+  /* ─── COMPATIBILITY ─── */
+  .compat-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .compat-badge {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 16px 28px;
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .compat-version {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .compat-label {
+    font-size: 11px;
+    color: #666;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    padding: 48px 60px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+  }
+
+  .footer-brand {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .footer-brand span { color: var(--accent); }
+
+  .footer p {
+    color: #555;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 32px;
+  }
+
+  /* ─── MOCK UI ─── */
+  .mock-ui {
+    background: #0f0f0f;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+
+  .mock-header {
+    background: #1a1a1a;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mock-dot.red { background: #e53e3e; }
+  .mock-dot.yellow { background: #d69e2e; }
+  .mock-dot.green { background: #38a169; }
+
+  .mock-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin-left: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .mock-body { padding: 0; }
+
+  .mock-row {
+    display: grid;
+    grid-template-columns: 80px 140px 1fr 80px 100px 80px;
+    gap: 0;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 12px;
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .mock-row:hover { background: rgba(255,255,255,0.02); }
+  .mock-row.header { background: #141414; color: #555; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+  .mock-ref { color: var(--accent); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; }
+  .mock-date { color: #aaa; }
+  .mock-product { color: #ddd; }
+  .mock-qty { color: #aaa; text-align: right; }
+  .mock-status { padding: 3px 8px; border-radius: 2px; font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+  .status-urgent { background: rgba(56,161,105,0.15); color: #68d391; border: 1px solid rgba(56,161,105,0.25); }
+  .status-distant { background: rgba(237,137,54,0.15); color: #f6ad55; border: 1px solid rgba(237,137,54,0.25); }
+  .status-forced { background: rgba(229,62,62,0.15); color: #fc8181; border: 1px solid rgba(229,62,62,0.25); }
+  .mock-state { padding: 3px 8px; border-radius: 2px; font-size: 10px; background: rgba(99,179,237,0.1); color: #90cdf4; border: 1px solid rgba(99,179,237,0.2); font-family: 'Syne', sans-serif; font-weight: 600; }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">Odoo 17 &amp; 18 · Manufacturing</div>
+    <h1>MRP <span>Smart</span><br>Reservation</h1>
+    <p>Stop letting distant Manufacturing Orders lock your stock. Intelligently distribute components to the orders that need them <em>now</em>.</p>
+    <div class="hero-tags">
+      <span class="tag">Priority-Based</span>
+      <span class="tag">Auto-Rebalancing</span>
+      <span class="tag">Force Override</span>
+      <span class="tag">Daily Cron</span>
+      <span class="tag">OPL-1</span>
+    </div>
+  </div>
+</section>
+
+<!-- MOCK UI -->
+<section class="section" style="padding-top: 0; border-top: none;">
+  <div class="mock-ui">
+    <div class="mock-header">
+      <div class="mock-dot red"></div>
+      <div class="mock-dot yellow"></div>
+      <div class="mock-dot green"></div>
+      <span class="mock-title">Manufacturing Orders — Smart Reservation Active</span>
+    </div>
+    <div class="mock-body">
+      <div class="mock-row header">
+        <span>Reference</span>
+        <span>Scheduled</span>
+        <span>Product</span>
+        <span>Qty</span>
+        <span>Reservation</span>
+        <span>Status</span>
+      </div>
+      <div class="mock-row">
+        <span class="mock-ref">WH/MO/0041</span>
+        <span class="mock-date" style="color:#fc8181">Today</span>
+        <span class="mock-product">Steel Frame XL</span>
+        <span class="mock-qty">20</span>
+        <span class="mock-status status-forced">Forced ⚡</span>
+        <span class="mock-state">Ready</span>
+      </div>
+      <div class="mock-row">
+        <span class="mock-ref">WH/MO/0038</span>
+        <span class="mock-date" style="color:#f6ad55">Tomorrow</span>
+        <span class="mock-product">Steel Frame XL</span>
+        <span class="mock-qty">30</span>
+        <span class="mock-status status-urgent">Urgent</span>
+        <span class="mock-state">Ready</span>
+      </div>
+      <div class="mock-row">
+        <span class="mock-ref">WH/MO/0035</span>
+        <span class="mock-date">In 5 days</span>
+        <span class="mock-product">Steel Frame XL</span>
+        <span class="mock-qty">25</span>
+        <span class="mock-status status-urgent">Urgent</span>
+        <span class="mock-state">Ready</span>
+      </div>
+      <div class="mock-row" style="opacity:0.5">
+        <span class="mock-ref">WH/MO/0022</span>
+        <span class="mock-date" style="color:#555">Sep 15, 2026</span>
+        <span class="mock-product">Steel Frame XL</span>
+        <span class="mock-qty">60</span>
+        <span class="mock-status status-distant">Distant</span>
+        <span class="mock-state" style="background:rgba(255,255,255,0.05); color:#555; border-color: rgba(255,255,255,0.08)">Waiting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="section">
+  <div class="section-label">The Problem</div>
+  <h2>Odoo reserves stock<br>for the wrong orders</h2>
+  <div class="divider"></div>
+
+  <div class="scenario">
+    <div class="scenario-title">Without MRP Smart Reservation</div>
+    <p>A Manufacturing Order confirmed for <strong>September 2026</strong> immediately locks <strong>500 units</strong> of Component A. A week later, an urgent order arrives for delivery <strong>tomorrow</strong> — but Odoo shows <strong>"Not Available"</strong>. The stock is physically there, but blocked by a distant MO. Operators must manually cancel reservations every single day.</p>
+  </div>
+
+  <br/>
+
+  <div class="solution-box">
+    <div class="solution-title">With MRP Smart Reservation</div>
+    <p>The module automatically keeps stock free for urgent orders. Distant MOs (beyond your configured horizon) are <strong>never reserved</strong> until they become urgent. When stock is tight, it goes to the most pressing order first — always. No manual intervention needed.</p>
+  </div>
+</section>
+
+<!-- PRIORITY SYSTEM -->
+<section class="section">
+  <div class="section-label">How it works</div>
+  <h2>Three-tier priority<br>engine</h2>
+  <div class="divider"></div>
+
+  <div class="priority-grid">
+    <div class="priority-card">
+      <div class="priority-number">1</div>
+      <div class="priority-badge badge-forced">Forced</div>
+      <h3>Manually Forced</h3>
+      <p>Any MO can be manually elevated to top priority with one click. It receives stock before all other orders, regardless of date.</p>
+    </div>
+    <div class="priority-card">
+      <div class="priority-number">2</div>
+      <div class="priority-badge badge-urgent">Urgent</div>
+      <h3>Within Horizon</h3>
+      <p>MOs scheduled within your configured horizon (e.g. 30 days) are reserved in chronological order — soonest first.</p>
+    </div>
+    <div class="priority-card">
+      <div class="priority-number">3</div>
+      <div class="priority-badge badge-distant">Distant</div>
+      <h3>Beyond Horizon</h3>
+      <p>MOs scheduled far in the future are never reserved automatically. Their stock stays available for urgent needs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-label">Features</div>
+  <h2>Everything you need,<br>nothing you don't</h2>
+  <div class="divider"></div>
+
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">⚙️</div>
+      <div>
+        <h3>Configurable Horizon</h3>
+        <p>Set your reservation window in days from Manufacturing → Configuration → Settings. Default: 30 days. Adjust per your production cycle.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⚡</div>
+      <div>
+        <h3>Force Reservation Button</h3>
+        <p>One click on any distant MO to elevate it to top priority. The global rebalancing runs instantly and redistributes stock accordingly.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🔄</div>
+      <div>
+        <h3>Auto-Rebalancing</h3>
+        <p>Triggered automatically on every MO confirmation and every scheduler run. Stock is always correctly distributed without manual action.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🌙</div>
+      <div>
+        <h3>Daily Cron Job</h3>
+        <p>Runs every night at 1 AM to guarantee correct stock distribution every morning. No surprises when operators arrive at the factory floor.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🏷️</div>
+      <div>
+        <h3>Visual Status Badges</h3>
+        <p>Color-coded badges on every MO: green for Urgent, orange for Distant, red for Forced. Instant visibility across list and form views.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🎯</div>
+      <div>
+        <h3>Manual Rebalance Action</h3>
+        <p>Available from the MO list Action menu. Instantly rebalances all reservations and shows a summary: X forced, Y urgent, Z distant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="section">
+  <div class="section-label">Impact</div>
+  <h2>Before &amp; After</h2>
+  <div class="divider"></div>
+
+  <div class="comparison">
+    <div class="comp-card before">
+      <div class="comp-label">❌ Without the module</div>
+      <div class="comp-item"><span class="comp-icon">🔴</span> Distant MOs lock stock for months in advance</div>
+      <div class="comp-item"><span class="comp-icon">🔴</span> Urgent orders blocked despite physical stock availability</div>
+      <div class="comp-item"><span class="comp-icon">🔴</span> Operators manually cancel reservations daily</div>
+      <div class="comp-item"><span class="comp-icon">🔴</span> No visibility on why stock is "unavailable"</div>
+      <div class="comp-item"><span class="comp-icon">🔴</span> Delivery delays on priority orders</div>
+    </div>
+    <div class="comp-card after">
+      <div class="comp-label">✅ With MRP Smart Reservation</div>
+      <div class="comp-item"><span class="comp-icon">🟢</span> Distant MOs never block stock automatically</div>
+      <div class="comp-item"><span class="comp-icon">🟢</span> Urgent orders always get stock first</div>
+      <div class="comp-item"><span class="comp-icon">🟢</span> Zero manual intervention required</div>
+      <div class="comp-item"><span class="comp-icon">🟢</span> Color-coded status on every MO at a glance</div>
+      <div class="comp-item"><span class="comp-icon">🟢</span> On-time delivery for priority production</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPATIBILITY -->
+<section class="section">
+  <div class="section-label">Compatibility</div>
+  <h2>Built for modern Odoo</h2>
+  <div class="divider"></div>
+  <p style="color:#888; max-width: 500px; margin-bottom: 32px;">Compatible with both Community and Enterprise editions. No external dependencies — only standard Odoo MRP and Stock modules required.</p>
+
+  <div class="compat-grid">
+    <div class="compat-badge">
+      <div class="compat-version">17.0</div>
+      <div class="compat-label">Community &amp; Enterprise</div>
+    </div>
+    <div class="compat-badge">
+      <div class="compat-version">18.0</div>
+      <div class="compat-label">Community &amp; Enterprise</div>
+    </div>
+    <div class="compat-badge" style="border-color: rgba(232,97,26,0.3);">
+      <div class="compat-version" style="color: #888; font-size: 18px;">mrp</div>
+      <div class="compat-label">Only dependency</div>
+    </div>
+    <div class="compat-badge" style="border-color: rgba(232,97,26,0.3);">
+      <div class="compat-version" style="color: #888; font-size: 18px;">OPL-1</div>
+      <div class="compat-label">License</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+  <div>
+    <div class="footer-brand">MRP <span>Smart</span> Reservation</div>
+    <p>Developed by Soufyane Abbad · Odoo Project Manager</p>
+  </div>
+  <div style="text-align:right">
+    <p style="color:#555; font-size:13px;">Questions or custom development?</p>
+    <p style="color: var(--accent); font-family:'Syne',sans-serif; font-weight:600; font-size:14px;">Contact via Odoo Apps</p>
+  </div>
+</section>
+
+</body>
+</html>
