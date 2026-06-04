@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mrp_production_form_smart" model="ir.ui.view">
+        <field name="name">mrp.production.form.smart.reservation</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="smart_force_reserved" invisible="1"/>
+                <field name="smart_is_distant" invisible="1"/>
+                <field name="state" invisible="1"/>
+                <button name="action_smart_force_reservation"
+                        string="⚡ Force Reservation"
+                        type="object"
+                        class="btn-warning"
+                        invisible="not smart_is_distant or smart_force_reserved == True or state not in ('confirmed', 'progress')"/>
+                <button name="action_smart_cancel_force"
+                        string="✖ Cancel Forced Reservation"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="smart_force_reserved == False"/>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="smart_reservation_status" widget="badge"
+                       decoration-danger="smart_reservation_status == 'forced'"
+                       decoration-success="smart_reservation_status == 'urgent'"
+                       decoration-warning="smart_reservation_status == 'distant'"
+                       decoration-muted="smart_reservation_status == 'na'"
+                       string="Reservation Status" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_production_list_smart" model="ir.ui.view">
+        <field name="name">mrp.production.list.smart.reservation</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_qty']" position="after">
+                <field name="smart_reservation_status" optional="show" string="Reservation" readonly="1"
+                       widget="badge"
+                       decoration-danger="smart_reservation_status == 'forced'"
+                       decoration-success="smart_reservation_status == 'urgent'"
+                       decoration-warning="smart_reservation_status == 'distant'"
+                       decoration-muted="smart_reservation_status == 'na'"/>
+                <field name="smart_force_reserved" column_invisible="1"/>
+                <field name="smart_is_distant" column_invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_smart_reequilibrer" model="ir.actions.server">
+        <field name="name">🔄 Rebalance Smart Reservations</field>
+        <field name="model_id" ref="mrp.model_mrp_production"/>
+        <field name="binding_model_id" ref="mrp.model_mrp_production"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_smart_reequilibrer_selection()</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="res_config_settings_view_smart" model="ir.ui.view">
+<field name="name">res.config.settings.view.smart.reservation</field>
+<field name="model">res.config.settings</field>
+<field name="inherit_id" ref="mrp.res_config_settings_view_form"/>
+<field name="arch" type="xml">
+<xpath expr="//app[@name='mrp']" position="inside">
+<block title="Smart Reservation" name="smart_reservation_setting">
+<setting string="Reservation Horizon (days)" help="MOs beyond this horizon will not reserve stock automatically.">
+<field name="mrp_smart_horizon_days"/>
+</setting>
+</block>
+</xpath>
+</field>
+</record>
+</odoo>
