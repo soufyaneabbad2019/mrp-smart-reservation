@@ -2,742 +2,686 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f3ef;
-    --accent: #e8611a;
-    --accent2: #f5a623;
-    --muted: #888;
-    --card: #111;
-    --border: rgba(255,255,255,0.08);
-  }
-
   body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
+    background: #f8f9fc;
+    color: #1a202c;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     line-height: 1.6;
-    overflow-x: hidden;
   }
 
   /* ─── HERO ─── */
   .hero {
-    min-height: 520px;
-    background: var(--black);
+    background: linear-gradient(135deg, #2d1b69 0%, #4c1d95 40%, #6d28d9 100%);
+    padding: 64px 60px;
     position: relative;
-    display: flex;
-    align-items: center;
-    padding: 80px 60px;
     overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(232,97,26,0.25) 0%, transparent 70%);
-    pointer-events: none;
   }
 
   .hero::after {
     content: '';
     position: absolute;
-    bottom: -100px; left: 30%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%);
-    pointer-events: none;
+    bottom: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
   }
+
+  .hero-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .hero-left { max-width: 600px; }
 
   .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(232,97,26,0.15);
-    border: 1px solid rgba(232,97,26,0.3);
-    color: var(--accent);
-    font-family: 'Syne', sans-serif;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #e9d5ff;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 2px;
-    margin-bottom: 28px;
-  }
-
-  .hero-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.4); }
-  }
-
-  .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(42px, 6vw, 72px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    max-width: 700px;
+    padding: 5px 14px;
+    border-radius: 20px;
     margin-bottom: 24px;
   }
 
-  .hero h1 span {
-    color: var(--accent);
-    position: relative;
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
   }
+
+  .hero h1 span { color: #fbbf24; }
 
   .hero p {
     font-size: 17px;
-    color: #aaa;
-    max-width: 520px;
-    margin-bottom: 40px;
+    color: rgba(255,255,255,0.75);
     line-height: 1.8;
+    margin-bottom: 32px;
   }
 
-  .hero-tags {
+  .hero-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
 
-  .tag {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    color: #ccc;
+  .pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #e9d5ff;
     font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 2px;
-    font-family: 'Syne', sans-serif;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  .hero-right {
+    flex-shrink: 0;
+  }
+
+  .price-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 28px 36px;
+    border-radius: 16px;
+    text-align: center;
+    min-width: 180px;
+  }
+
+  .price-label {
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .price-value {
+    font-size: 42px;
+    font-weight: 800;
+    color: #fbbf24;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .price-currency {
+    font-size: 20px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    color: #fbbf24;
+    vertical-align: super;
   }
 
-  .hero-visual {
-    position: absolute;
-    right: 60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 380px;
+  .price-note {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    margin-top: 8px;
   }
 
-  /* ─── PROBLEM SECTION ─── */
+  /* ─── SECTIONS ─── */
   .section {
-    padding: 80px 60px;
-    border-top: 1px solid var(--border);
+    padding: 64px 60px;
   }
 
-  .section-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 10px;
+  .section-alt { background: #ffffff; }
+  .section-dark {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: white;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: #7c3aed;
+    margin-bottom: 10px;
+  }
+
+  .section-dark .section-eyebrow { color: #c4b5fd; }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #1a202c;
+    line-height: 1.2;
+  }
+
+  .section-dark .section-header h2 { color: #ffffff; }
+
+  .section-header p {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #64748b;
+    max-width: 580px;
+    line-height: 1.8;
+  }
+
+  .section-dark .section-header p { color: rgba(255,255,255,0.65); }
+
+  /* ─── SCREENSHOT ─── */
+  .screenshot-wrap {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    border: 1px solid #e2e8f0;
+  }
+
+  .screenshot-wrap img {
+    width: 100%;
+    display: block;
+  }
+
+  .screenshot-caption {
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 12px 20px;
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ─── TWO COLUMNS ─── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .two-col.reverse { direction: rtl; }
+  .two-col.reverse > * { direction: ltr; }
+
+  /* ─── PROBLEM BOXES ─── */
+  .problem-box {
+    background: #fff5f5;
+    border: 1px solid #fed7d7;
+    border-left: 4px solid #e53e3e;
+    border-radius: 8px;
+    padding: 24px 28px;
     margin-bottom: 16px;
   }
 
-  .section h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 1.1;
-    margin-bottom: 40px;
-  }
-
-  /* ─── PROBLEM SCENARIO ─── */
-  .scenario {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 3px solid #e53e3e;
-    padding: 32px 40px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .scenario::before {
-    content: '⚠';
-    position: absolute;
-    right: 24px; top: 20px;
-    font-size: 28px;
-    opacity: 0.15;
-  }
-
-  .scenario-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
+  .problem-box-label {
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #e53e3e;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
-  .scenario p {
-    color: #bbb;
+  .problem-box p {
     font-size: 15px;
+    color: #4a5568;
     line-height: 1.8;
   }
 
-  .scenario strong {
-    color: var(--white);
-  }
-
   .solution-box {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 3px solid #38a169;
-    padding: 32px 40px;
-    position: relative;
-    overflow: hidden;
+    background: #f0fff4;
+    border: 1px solid #9ae6b4;
+    border-left: 4px solid #38a169;
+    border-radius: 8px;
+    padding: 24px 28px;
   }
 
-  .solution-box::before {
-    content: '✓';
-    position: absolute;
-    right: 24px; top: 20px;
-    font-size: 28px;
-    opacity: 0.15;
-    color: #38a169;
-  }
-
-  .solution-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
+  .solution-box-label {
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #38a169;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
-  /* ─── PRIORITY TABLE ─── */
+  .solution-box p {
+    font-size: 15px;
+    color: #4a5568;
+    line-height: 1.8;
+  }
+
+  /* ─── PRIORITY CARDS ─── */
   .priority-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 20px;
     margin-top: 40px;
   }
 
   .priority-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 32px 28px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   }
 
-  .priority-card:hover {
-    border-color: rgba(255,255,255,0.2);
-  }
-
-  .priority-number {
-    font-family: 'Syne', sans-serif;
-    font-size: 64px;
+  .priority-num {
+    font-size: 48px;
     font-weight: 800;
     line-height: 1;
-    opacity: 0.07;
-    position: absolute;
-    right: 16px;
-    top: 12px;
-    letter-spacing: -4px;
+    margin-bottom: 12px;
+    opacity: 0.15;
   }
 
   .priority-badge {
     display: inline-block;
-    padding: 3px 10px;
-    border-radius: 2px;
-    font-family: 'Syne', sans-serif;
-    font-size: 10px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
-  .badge-forced { background: rgba(229,62,62,0.15); color: #fc8181; border: 1px solid rgba(229,62,62,0.3); }
-  .badge-urgent { background: rgba(56,161,105,0.15); color: #68d391; border: 1px solid rgba(56,161,105,0.3); }
-  .badge-distant { background: rgba(237,137,54,0.15); color: #f6ad55; border: 1px solid rgba(237,137,54,0.3); }
+  .b-forced { background: #fff5f5; color: #e53e3e; border: 1px solid #fed7d7; }
+  .b-urgent { background: #f0fff4; color: #38a169; border: 1px solid #9ae6b4; }
+  .b-distant { background: #fffaf0; color: #dd6b20; border: 1px solid #fbd38d; }
 
   .priority-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
+    color: #1a202c;
     margin-bottom: 10px;
   }
 
   .priority-card p {
-    color: #888;
     font-size: 13px;
+    color: #64748b;
     line-height: 1.7;
   }
 
-  /* ─── FEATURES ─── */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    margin-top: 40px;
+  /* ─── FEATURE LIST ─── */
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .feature-item {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 32px;
     display: flex;
-    gap: 20px;
     align-items: flex-start;
-    transition: background 0.3s;
-  }
-
-  .feature-item:hover {
-    background: #161616;
+    gap: 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 18px 20px;
   }
 
   .feature-icon {
-    width: 44px;
-    height: 44px;
-    background: rgba(232,97,26,0.1);
-    border: 1px solid rgba(232,97,26,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
+    font-size: 22px;
     flex-shrink: 0;
-    border-radius: 2px;
+    width: 40px;
+    text-align: center;
   }
 
   .feature-item h3 {
-    font-family: 'Syne', sans-serif;
     font-size: 15px;
     font-weight: 700;
-    margin-bottom: 6px;
-    letter-spacing: -0.3px;
+    color: #ffffff;
+    margin-bottom: 4px;
   }
 
   .feature-item p {
-    color: #888;
     font-size: 13px;
-    line-height: 1.7;
-  }
-
-  /* ─── BEFORE / AFTER ─── */
-  .comparison {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    margin-top: 40px;
-  }
-
-  .comp-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 36px;
-  }
-
-  .comp-card.before { border-top: 2px solid #e53e3e; }
-  .comp-card.after  { border-top: 2px solid #38a169; }
-
-  .comp-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .comp-card.before .comp-label { color: #e53e3e; }
-  .comp-card.after  .comp-label { color: #38a169; }
-
-  .comp-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 16px;
-    font-size: 14px;
-    color: #bbb;
+    color: rgba(255,255,255,0.6);
     line-height: 1.6;
   }
 
-  .comp-icon { flex-shrink: 0; font-size: 16px; }
-
-  /* ─── COMPATIBILITY ─── */
-  .compat-grid {
+  /* ─── COMPAT ─── */
+  .compat-row {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
     margin-top: 32px;
   }
 
-  .compat-badge {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 16px 28px;
+  .compat-chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 16px 24px;
     text-align: center;
-    min-width: 140px;
   }
 
-  .compat-version {
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
+  .compat-ver {
+    font-size: 26px;
     font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -1px;
+    color: #fbbf24;
+    letter-spacing: -0.5px;
     line-height: 1;
   }
 
-  .compat-label {
+  .compat-lbl {
     font-size: 11px;
-    color: #666;
+    color: rgba(255,255,255,0.5);
     margin-top: 4px;
-    letter-spacing: 1px;
   }
 
   /* ─── FOOTER ─── */
   .footer {
-    padding: 48px 60px;
-    border-top: 1px solid var(--border);
+    background: #1a202c;
+    padding: 40px 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: gap;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 
   .footer-brand {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
+    color: #ffffff;
     letter-spacing: -0.5px;
   }
 
-  .footer-brand span { color: var(--accent); }
-
-  .footer p {
-    color: #555;
-    font-size: 13px;
-    margin-top: 6px;
-  }
+  .footer-brand span { color: #fbbf24; }
+  .footer p { color: #718096; font-size: 13px; margin-top: 4px; }
+  .footer-right { color: #718096; font-size: 13px; text-align: right; }
+  .footer-right strong { color: #fbbf24; font-size: 15px; display: block; }
 
   /* ─── DIVIDER ─── */
-  .divider {
-    width: 48px;
-    height: 2px;
-    background: var(--accent);
-    margin-bottom: 32px;
-  }
-
-  /* ─── MOCK UI ─── */
-  .mock-ui {
-    background: #0f0f0f;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-top: 40px;
-  }
-
-  .mock-header {
-    background: #1a1a1a;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .mock-dot.red { background: #e53e3e; }
-  .mock-dot.yellow { background: #d69e2e; }
-  .mock-dot.green { background: #38a169; }
-
-  .mock-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: #666;
-    margin-left: 8px;
-    letter-spacing: 0.5px;
-  }
-
-  .mock-body { padding: 0; }
-
-  .mock-row {
-    display: grid;
-    grid-template-columns: 80px 140px 1fr 80px 100px 80px;
-    gap: 0;
-    padding: 14px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-size: 12px;
-    align-items: center;
-    transition: background 0.2s;
-  }
-
-  .mock-row:hover { background: rgba(255,255,255,0.02); }
-  .mock-row.header { background: #141414; color: #555; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
-
-  .mock-ref { color: var(--accent); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; }
-  .mock-date { color: #aaa; }
-  .mock-product { color: #ddd; }
-  .mock-qty { color: #aaa; text-align: right; }
-  .mock-status { padding: 3px 8px; border-radius: 2px; font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
-  .status-urgent { background: rgba(56,161,105,0.15); color: #68d391; border: 1px solid rgba(56,161,105,0.25); }
-  .status-distant { background: rgba(237,137,54,0.15); color: #f6ad55; border: 1px solid rgba(237,137,54,0.25); }
-  .status-forced { background: rgba(229,62,62,0.15); color: #fc8181; border: 1px solid rgba(229,62,62,0.25); }
-  .mock-state { padding: 3px 8px; border-radius: 2px; font-size: 10px; background: rgba(99,179,237,0.1); color: #90cdf4; border: 1px solid rgba(99,179,237,0.2); font-family: 'Syne', sans-serif; font-weight: 600; }
+  hr.soft { border: none; border-top: 1px solid #e2e8f0; margin: 40px 0; }
 
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div>
-    <div class="hero-badge">Odoo 17 &amp; 18 · Manufacturing</div>
-    <h1>MRP <span>Smart</span><br>Reservation</h1>
-    <p>Stop letting distant Manufacturing Orders lock your stock. Intelligently distribute components to the orders that need them <em>now</em>.</p>
-    <div class="hero-tags">
-      <span class="tag">Priority-Based</span>
-      <span class="tag">Auto-Rebalancing</span>
-      <span class="tag">Force Override</span>
-      <span class="tag">Daily Cron</span>
-      <span class="tag">OPL-1</span>
+  <div class="hero-top">
+    <div class="hero-left">
+      <div class="hero-badge">Odoo 17 &amp; 18 · Manufacturing · MRP</div>
+      <h1>MRP <span>Smart</span><br>Reservation</h1>
+      <p>Stop letting distant Manufacturing Orders lock your components. Automatically distribute stock to the orders that need it <strong style="color:white">now</strong> — with full priority control.</p>
+      <div class="hero-pills">
+        <span class="pill">⚡ Force Override</span>
+        <span class="pill">🔄 Auto-Rebalancing</span>
+        <span class="pill">🌙 Daily Cron</span>
+        <span class="pill">🏷️ Visual Badges</span>
+        <span class="pill">⚙️ Configurable Horizon</span>
+        <span class="pill">OPL-1</span>
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- MOCK UI -->
-<section class="section" style="padding-top: 0; border-top: none;">
-  <div class="mock-ui">
-    <div class="mock-header">
-      <div class="mock-dot red"></div>
-      <div class="mock-dot yellow"></div>
-      <div class="mock-dot green"></div>
-      <span class="mock-title">Manufacturing Orders — Smart Reservation Active</span>
-    </div>
-    <div class="mock-body">
-      <div class="mock-row header">
-        <span>Reference</span>
-        <span>Scheduled</span>
-        <span>Product</span>
-        <span>Qty</span>
-        <span>Reservation</span>
-        <span>Status</span>
-      </div>
-      <div class="mock-row">
-        <span class="mock-ref">WH/MO/0041</span>
-        <span class="mock-date" style="color:#fc8181">Today</span>
-        <span class="mock-product">Steel Frame XL</span>
-        <span class="mock-qty">20</span>
-        <span class="mock-status status-forced">Forced ⚡</span>
-        <span class="mock-state">Ready</span>
-      </div>
-      <div class="mock-row">
-        <span class="mock-ref">WH/MO/0038</span>
-        <span class="mock-date" style="color:#f6ad55">Tomorrow</span>
-        <span class="mock-product">Steel Frame XL</span>
-        <span class="mock-qty">30</span>
-        <span class="mock-status status-urgent">Urgent</span>
-        <span class="mock-state">Ready</span>
-      </div>
-      <div class="mock-row">
-        <span class="mock-ref">WH/MO/0035</span>
-        <span class="mock-date">In 5 days</span>
-        <span class="mock-product">Steel Frame XL</span>
-        <span class="mock-qty">25</span>
-        <span class="mock-status status-urgent">Urgent</span>
-        <span class="mock-state">Ready</span>
-      </div>
-      <div class="mock-row" style="opacity:0.5">
-        <span class="mock-ref">WH/MO/0022</span>
-        <span class="mock-date" style="color:#555">Sep 15, 2026</span>
-        <span class="mock-product">Steel Frame XL</span>
-        <span class="mock-qty">60</span>
-        <span class="mock-status status-distant">Distant</span>
-        <span class="mock-state" style="background:rgba(255,255,255,0.05); color:#555; border-color: rgba(255,255,255,0.08)">Waiting</span>
+    <div class="hero-right">
+      <div class="price-card">
+        <div class="price-label">One-time price</div>
+        <div class="price-value"><span class="price-currency">€</span>89</div>
+        <div class="price-note">Odoo 17 &amp; 18<br>Community &amp; Enterprise</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE PROBLEM -->
+<!-- ═══ 1. THE PROBLEM ═══ -->
+<section class="section section-alt">
+  <div class="section-header">
+    <div class="section-eyebrow">The Problem</div>
+    <h2>Odoo reserves stock for the<br>wrong Manufacturing Orders</h2>
+    <p>When multiple confirmed MOs compete for the same components, Odoo has no built-in mechanism to decide which one gets the stock first. A distant MO confirmed for November can block components needed for delivery tomorrow.</p>
+  </div>
+
+  <div class="problem-box">
+    <div class="problem-box-label">❌ Without MRP Smart Reservation</div>
+    <p>MO <strong>WH/MO/00015</strong> scheduled for <strong>01/11/2026</strong> immediately locks 50 units of Comp A and Comp B. Urgent MOs due <em>today</em> or <em>in 2 days</em> show <strong>"Pas disponible"</strong> even though the stock is physically present — it's just blocked by a distant order.</p>
+  </div>
+
+  <br/>
+
+  <div class="screenshot-wrap">
+    <img src="Statut_des_composants_.png" alt="Stock forecast showing components blocked by distant MO"/>
+    <div class="screenshot-caption">📊 Stock forecast (Comp A) — before Smart Reservation: a distant MO locks all stock, urgent MOs cannot be served</div>
+  </div>
+</section>
+
+<!-- ═══ 2. THE SOLUTION — LIST VIEW ═══ -->
 <section class="section">
-  <div class="section-label">The Problem</div>
-  <h2>Odoo reserves stock<br>for the wrong orders</h2>
-  <div class="divider"></div>
+  <div class="section-header">
+    <div class="section-eyebrow">The Solution</div>
+    <h2>Priority-based automatic<br>stock rebalancing</h2>
+    <p>MRP Smart Reservation introduces a 3-tier priority engine that automatically assigns stock to the most urgent orders first. Every MO gets a color-coded status badge so operators instantly know what is reserved and why.</p>
+  </div>
 
-  <div class="scenario">
-    <div class="scenario-title">Without MRP Smart Reservation</div>
-    <p>A Manufacturing Order confirmed for <strong>September 2026</strong> immediately locks <strong>500 units</strong> of Component A. A week later, an urgent order arrives for delivery <strong>tomorrow</strong> — but Odoo shows <strong>"Not Available"</strong>. The stock is physically there, but blocked by a distant MO. Operators must manually cancel reservations every single day.</p>
+  <div class="screenshot-wrap">
+    <img src="Vue_de_liste_des_OF.png" alt="Manufacturing Orders list view with Smart Reservation badges"/>
+    <div class="screenshot-caption">📋 MO List view — Urgent MOs (green) are reserved first. Distant MOs (orange) are deprioritized — stock stays free for urgent needs.</div>
   </div>
 
   <br/>
 
   <div class="solution-box">
-    <div class="solution-title">With MRP Smart Reservation</div>
-    <p>The module automatically keeps stock free for urgent orders. Distant MOs (beyond your configured horizon) are <strong>never reserved</strong> until they become urgent. When stock is tight, it goes to the most pressing order first — always. No manual intervention needed.</p>
+    <div class="solution-box-label">✅ With MRP Smart Reservation</div>
+    <p>MOs <strong>WH/MO/00018</strong> (Today), <strong>WH/MO/00017</strong> (Dans 2 jours) and <strong>WH/MO/00016</strong> (Dans 18 jours) are all marked <strong>Urgent</strong> and automatically reserved. The distant MO <strong>WH/MO/00015</strong> (01/11/2026) stays <strong>Distant</strong> — it does not block any stock.</p>
   </div>
 </section>
 
-<!-- PRIORITY SYSTEM -->
+<!-- ═══ 3. URGENT MO ═══ -->
+<section class="section section-alt">
+  <div class="section-header">
+    <div class="section-eyebrow">Priority 2 — Urgent</div>
+    <h2>Urgent MOs are always<br>served first</h2>
+    <p>Any MO scheduled within your configured horizon (default: 30 days) is classified as <strong>Urgent</strong>. It is automatically reserved in chronological order — soonest deadline first. Components show green "Disponible" immediately after confirmation.</p>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="screenshot-wrap">
+        <img src="reservation_dans_2jrs.png" alt="Urgent MO reserved in 2 days"/>
+        <div class="screenshot-caption">✅ WH/MO/00017 — Dans 2 jours — Badge Urgent — Composants Disponibles</div>
+      </div>
+    </div>
+    <div>
+      <div class="screenshot-wrap">
+        <img src="reservation_7-2026.png" alt="Urgent MO reserved in 18 days"/>
+        <div class="screenshot-caption">✅ WH/MO/00016 — Dans 18 jours — Badge Urgent — Composants Disponibles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. DISTANT MO + FORCE ═══ -->
 <section class="section">
-  <div class="section-label">How it works</div>
-  <h2>Three-tier priority<br>engine</h2>
-  <div class="divider"></div>
+  <div class="section-header">
+    <div class="section-eyebrow">Priority 3 — Distant + Force Override</div>
+    <h2>Distant MOs never block stock —<br>unless you force it</h2>
+    <p>MOs beyond your horizon are classified as <strong>Distant</strong> and are never reserved automatically. Their components remain available for urgent orders. But if you need to expedite one, a single click on <strong>⚡ Force Reservation</strong> elevates it to top priority instantly.</p>
+  </div>
+
+  <div class="screenshot-wrap">
+    <img src="reservartion_1-11-2026.png" alt="Distant MO with Force Reservation button"/>
+    <div class="screenshot-caption">⚡ WH/MO/00015 — 01/11/2026 — Badge Distant — Bouton Force Reservation visible — Stock non réservé automatiquement</div>
+  </div>
+</section>
+
+<!-- ═══ 5. REBALANCE ACTION ═══ -->
+<section class="section section-alt">
+  <div class="section-header">
+    <div class="section-eyebrow">Manual Control</div>
+    <h2>Rebalance all reservations<br>in one click</h2>
+    <p>The <strong>Rebalance Smart Reservations</strong> action is available directly from the MO list. Select all MOs and trigger a full rebalancing — the module unreserves everything and redistributes stock according to the priority rules. A notification confirms the result instantly.</p>
+  </div>
+
+  <div class="screenshot-wrap">
+    <img src="rebalnce_smart_reservation.png" alt="Rebalance Smart Reservations action in Action menu"/>
+    <div class="screenshot-caption">🔄 Action menu → Rebalance Smart Reservations — triggered from the MO list after selecting all orders</div>
+  </div>
+</section>
+
+<!-- ═══ 6. CONFIGURATION ═══ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Configuration</div>
+    <h2>Set your horizon in seconds</h2>
+    <p>Go to <strong>Manufacturing → Configuration → Settings</strong> and find the <em>Smart Reservation</em> section. Enter the number of days that defines your horizon. MOs beyond this window are Distant. MOs within it are Urgent. That's the only setting you need.</p>
+  </div>
+
+  <div class="screenshot-wrap">
+    <img src="Horizon.png" alt="Smart Reservation settings — Reservation Horizon 30 days"/>
+    <div class="screenshot-caption">⚙️ Fabrication → Configuration → Paramètres → Smart Reservation — Horizon configurable (défaut : 30 jours)</div>
+  </div>
+</section>
+
+<!-- ═══ 7. STOCK RESULT ═══ -->
+<section class="section section-alt">
+  <div class="section-header">
+    <div class="section-eyebrow">Result</div>
+    <h2>Stock correctly distributed<br>across all MOs</h2>
+    <p>After Smart Reservation runs, the stock forecast shows the exact picture: urgent MOs are reserved in order, distant MOs wait. No more stock surprises on the factory floor.</p>
+  </div>
+
+  <div class="screenshot-wrap">
+    <img src="Statut_des_composants_vue_finale_.png" alt="Stock forecast after Smart Reservation — correct distribution"/>
+    <div class="screenshot-caption">📊 Prévision de stock finale — WH/MO/00018, 00017, 00016 réservés (urgent) · WH/MO/00019 et 00015 en attente (distant)</div>
+  </div>
+</section>
+
+<!-- ═══ 8. PRIORITY SYSTEM ═══ -->
+<section class="section-dark section">
+  <div class="section-header">
+    <div class="section-eyebrow">How it works</div>
+    <h2>Three-tier priority engine</h2>
+    <p>Every confirmed MO is classified automatically at each rebalancing cycle.</p>
+  </div>
 
   <div class="priority-grid">
     <div class="priority-card">
-      <div class="priority-number">1</div>
-      <div class="priority-badge badge-forced">Forced</div>
+      <div class="priority-num" style="color:#e53e3e">1</div>
+      <div class="priority-badge b-forced">⚡ Forced</div>
       <h3>Manually Forced</h3>
-      <p>Any MO can be manually elevated to top priority with one click. It receives stock before all other orders, regardless of date.</p>
+      <p>Any MO manually elevated via the Force Reservation button. Reserved first, regardless of date. Stays forced until you cancel it.</p>
     </div>
     <div class="priority-card">
-      <div class="priority-number">2</div>
-      <div class="priority-badge badge-urgent">Urgent</div>
+      <div class="priority-num" style="color:#38a169">2</div>
+      <div class="priority-badge b-urgent">✅ Urgent</div>
       <h3>Within Horizon</h3>
-      <p>MOs scheduled within your configured horizon (e.g. 30 days) are reserved in chronological order — soonest first.</p>
+      <p>MOs scheduled within your configured horizon. Reserved automatically in chronological order — soonest deadline first.</p>
     </div>
     <div class="priority-card">
-      <div class="priority-number">3</div>
-      <div class="priority-badge badge-distant">Distant</div>
+      <div class="priority-num" style="color:#dd6b20">3</div>
+      <div class="priority-badge b-distant">⏸ Distant</div>
       <h3>Beyond Horizon</h3>
-      <p>MOs scheduled far in the future are never reserved automatically. Their stock stays available for urgent needs.</p>
+      <p>MOs scheduled far in the future. Never reserved automatically. Stock stays free for urgent needs. Can be forced manually at any time.</p>
     </div>
   </div>
-</section>
 
-<!-- FEATURES -->
-<section class="section">
-  <div class="section-label">Features</div>
-  <h2>Everything you need,<br>nothing you don't</h2>
-  <div class="divider"></div>
+  <br/><br/>
 
-  <div class="features-grid">
+  <!-- FEATURES -->
+  <div class="section-header" style="margin-bottom:24px">
+    <div class="section-eyebrow">All Features</div>
+    <h2>Everything included</h2>
+  </div>
+
+  <div class="feature-list">
     <div class="feature-item">
       <div class="feature-icon">⚙️</div>
       <div>
         <h3>Configurable Horizon</h3>
-        <p>Set your reservation window in days from Manufacturing → Configuration → Settings. Default: 30 days. Adjust per your production cycle.</p>
+        <p>Set your reservation window in Manufacturing → Configuration → Settings. Default 30 days. Adjust per your production cycle.</p>
       </div>
     </div>
     <div class="feature-item">
       <div class="feature-icon">⚡</div>
       <div>
         <h3>Force Reservation Button</h3>
-        <p>One click on any distant MO to elevate it to top priority. The global rebalancing runs instantly and redistributes stock accordingly.</p>
+        <p>Visible only on Distant MOs. One click elevates any MO to top priority and triggers instant global rebalancing.</p>
       </div>
     </div>
     <div class="feature-item">
       <div class="feature-icon">🔄</div>
       <div>
-        <h3>Auto-Rebalancing</h3>
-        <p>Triggered automatically on every MO confirmation and every scheduler run. Stock is always correctly distributed without manual action.</p>
+        <h3>Auto-Rebalancing on Confirmation</h3>
+        <p>Every time a new MO is confirmed, the rebalancing engine runs automatically. Stock is always correctly distributed without manual action.</p>
       </div>
     </div>
     <div class="feature-item">
       <div class="feature-icon">🌙</div>
       <div>
         <h3>Daily Cron Job</h3>
-        <p>Runs every night at 1 AM to guarantee correct stock distribution every morning. No surprises when operators arrive at the factory floor.</p>
+        <p>Runs every night at 1 AM. Guarantees correct stock distribution every morning when operators arrive at the factory floor.</p>
       </div>
     </div>
     <div class="feature-item">
       <div class="feature-icon">🏷️</div>
       <div>
         <h3>Visual Status Badges</h3>
-        <p>Color-coded badges on every MO: green for Urgent, orange for Distant, red for Forced. Instant visibility across list and form views.</p>
+        <p>Color-coded badges on every MO — green for Urgent, orange for Distant, red for Forced. Visible on both list and form views.</p>
       </div>
     </div>
     <div class="feature-item">
       <div class="feature-icon">🎯</div>
       <div>
         <h3>Manual Rebalance Action</h3>
-        <p>Available from the MO list Action menu. Instantly rebalances all reservations and shows a summary: X forced, Y urgent, Z distant.</p>
+        <p>Available from the Action menu on the MO list. Rebalances all reservations and shows a summary notification with full statistics.</p>
       </div>
     </div>
   </div>
-</section>
 
-<!-- BEFORE / AFTER -->
-<section class="section">
-  <div class="section-label">Impact</div>
-  <h2>Before &amp; After</h2>
-  <div class="divider"></div>
+  <!-- COMPAT -->
+  <br/><br/>
+  <div class="section-header" style="margin-bottom: 0">
+    <div class="section-eyebrow">Compatibility</div>
+    <h2>Built for modern Odoo</h2>
+    <p>No external dependencies. Only standard Odoo MRP and Stock modules required.</p>
+  </div>
 
-  <div class="comparison">
-    <div class="comp-card before">
-      <div class="comp-label">❌ Without the module</div>
-      <div class="comp-item"><span class="comp-icon">🔴</span> Distant MOs lock stock for months in advance</div>
-      <div class="comp-item"><span class="comp-icon">🔴</span> Urgent orders blocked despite physical stock availability</div>
-      <div class="comp-item"><span class="comp-icon">🔴</span> Operators manually cancel reservations daily</div>
-      <div class="comp-item"><span class="comp-icon">🔴</span> No visibility on why stock is "unavailable"</div>
-      <div class="comp-item"><span class="comp-icon">🔴</span> Delivery delays on priority orders</div>
+  <div class="compat-row">
+    <div class="compat-chip">
+      <div class="compat-ver">17.0</div>
+      <div class="compat-lbl">Community &amp; Enterprise</div>
     </div>
-    <div class="comp-card after">
-      <div class="comp-label">✅ With MRP Smart Reservation</div>
-      <div class="comp-item"><span class="comp-icon">🟢</span> Distant MOs never block stock automatically</div>
-      <div class="comp-item"><span class="comp-icon">🟢</span> Urgent orders always get stock first</div>
-      <div class="comp-item"><span class="comp-icon">🟢</span> Zero manual intervention required</div>
-      <div class="comp-item"><span class="comp-icon">🟢</span> Color-coded status on every MO at a glance</div>
-      <div class="comp-item"><span class="comp-icon">🟢</span> On-time delivery for priority production</div>
+    <div class="compat-chip">
+      <div class="compat-ver">18.0</div>
+      <div class="compat-lbl">Community &amp; Enterprise</div>
+    </div>
+    <div class="compat-chip">
+      <div class="compat-ver" style="font-size:18px">mrp + stock</div>
+      <div class="compat-lbl">Only dependencies</div>
+    </div>
+    <div class="compat-chip">
+      <div class="compat-ver" style="font-size:18px">OPL-1</div>
+      <div class="compat-lbl">License</div>
     </div>
   </div>
+
 </section>
 
-<!-- COMPATIBILITY -->
-<section class="section">
-  <div class="section-label">Compatibility</div>
-  <h2>Built for modern Odoo</h2>
-  <div class="divider"></div>
-  <p style="color:#888; max-width: 500px; margin-bottom: 32px;">Compatible with both Community and Enterprise editions. No external dependencies — only standard Odoo MRP and Stock modules required.</p>
-
-  <div class="compat-grid">
-    <div class="compat-badge">
-      <div class="compat-version">17.0</div>
-      <div class="compat-label">Community &amp; Enterprise</div>
-    </div>
-    <div class="compat-badge">
-      <div class="compat-version">18.0</div>
-      <div class="compat-label">Community &amp; Enterprise</div>
-    </div>
-    <div class="compat-badge" style="border-color: rgba(232,97,26,0.3);">
-      <div class="compat-version" style="color: #888; font-size: 18px;">mrp</div>
-      <div class="compat-label">Only dependency</div>
-    </div>
-    <div class="compat-badge" style="border-color: rgba(232,97,26,0.3);">
-      <div class="compat-version" style="color: #888; font-size: 18px;">OPL-1</div>
-      <div class="compat-label">License</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<section class="footer">
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
   <div>
     <div class="footer-brand">MRP <span>Smart</span> Reservation</div>
     <p>Developed by Soufyane Abbad · Odoo Project Manager</p>
   </div>
-  <div style="text-align:right">
-    <p style="color:#555; font-size:13px;">Questions or custom development?</p>
-    <p style="color: var(--accent); font-family:'Syne',sans-serif; font-weight:600; font-size:14px;">Contact via Odoo Apps</p>
+  <div class="footer-right">
+    <strong>89.00 €</strong>
+    One-time purchase · OPL-1 · Odoo 17 &amp; 18
   </div>
-</section>
+</div>
 
 </body>
 </html>
