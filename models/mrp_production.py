@@ -127,12 +127,3 @@ class MrpProduction(models.Model):
     @api.model
     def _cron_smart_reequilibrer(self):
         self._smart_reequilibrer()
-
-
-class StockSchedulerCompute(models.TransientModel):
-    _inherit = 'stock.scheduler.compute'
-
-    def procure_calculation(self):
-        result = super().procure_calculation()
-        self.env['mrp.production']._smart_reequilibrer()
-        return result
