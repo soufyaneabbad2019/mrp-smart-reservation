@@ -1,11 +1,11 @@
 <section class="oe_container">
 <style>
-.msr-wrap { max-width: 700px; margin: 0 auto; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #2d2d2d; line-height: 1.6; }
+.msr-wrap { max-width: 620px; margin: 0 auto; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #2d2d2d; line-height: 1.6; }
 .msr-wrap h1 { font-size: 28px; margin-bottom: 4px; }
 .msr-wrap h2 { font-size: 20px; margin-top: 36px; margin-bottom: 10px; border-bottom: 2px solid #875A7B; padding-bottom: 6px; }
 .msr-wrap h3 { font-size: 17px; margin-top: 22px; margin-bottom: 8px; }
 .msr-tagline { font-size: 16px; color: #6b6b6b; margin-bottom: 24px; }
-.msr-img { width: 100%; max-width: 700px; border: 1px solid #e0e0e0; border-radius: 6px; margin: 10px auto 20px auto; display: block; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.msr-img { max-width: 620px; width: 620px; height: auto; border: 1px solid #e0e0e0; border-radius: 6px; margin: 10px auto 20px auto; display: block; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
 .msr-badges { margin: 16px 0; }
 .msr-badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: 600; font-size: 13px; color: #fff; margin-right: 8px; }
 .msr-badge-forced { background: #d9534f; }
@@ -26,139 +26,139 @@
 <div class="msr-wrap">
 
 <div class="msr-lang-switch">
-<button class="active" onclick="document.querySelectorAll('.msr-lang-block').forEach(function(e){e.classList.remove('active')});document.getElementById('msr-fr').classList.add('active');this.classList.add('active');this.nextElementSibling.classList.remove('active');">Français</button>
+<button class="active" onclick="document.querySelectorAll('.msr-lang-block').forEach(function(e){e.classList.remove('active')});document.getElementById('msr-fr').classList.add('active');this.classList.add('active');this.nextElementSibling.classList.remove('active');">Fran&ccedil;ais</button>
 <button onclick="document.querySelectorAll('.msr-lang-block').forEach(function(e){e.classList.remove('active')});document.getElementById('msr-en').classList.add('active');this.classList.add('active');this.previousElementSibling.classList.remove('active');">English</button>
 </div>
 
 <div class="msr-lang-block active" id="msr-fr">
 
 <h1>MRP Smart Reservation</h1>
-<p class="msr-tagline">Réservation de stock intelligente et automatique pour vos ordres de fabrication.</p>
+<p class="msr-tagline">R&eacute;servation de stock intelligente et automatique pour vos ordres de fabrication.</p>
 
-<h2>Le problème</h2>
+<h2>Le probl&egrave;me</h2>
 <p>
-Par défaut, Odoo réserve le stock pour les ordres de fabrication (OF) selon la règle
-"premier confirmé, premier servi". Concrètement, un OF planifié dans plusieurs mois
-peut réserver des composants dont un OF urgent — dû demain — a un besoin immédiat.
-Résultat : retards de production, gestion de crise de dernière minute, et
-réajustements manuels du stock qui prennent un temps précieux.
+Par d&eacute;faut, Odoo r&eacute;serve le stock pour les ordres de fabrication (OF) selon la r&egrave;gle
+"premier confirm&eacute;, premier servi". Concr&egrave;tement, un OF planifi&eacute; dans plusieurs mois
+peut r&eacute;server des composants dont un OF urgent &mdash; d&ucirc; demain &mdash; a un besoin immediat.
+R&eacute;sultat&nbsp;: retards de production, gestion de crise de derni&egrave;re minute, et
+r&eacute;ajustements manuels du stock qui prennent un temps pr&eacute;cieux.
 </p>
 
-<h2>La solution : un moteur de priorité automatique</h2>
+<h2>La solution&nbsp;: un moteur de priorit&eacute; automatique</h2>
 <p>
 MRP Smart Reservation classe automatiquement chaque ordre de fabrication selon
-trois niveaux de priorité, affichés directement sous forme de badges colorés
-dans la liste et sur la fiche de l'OF :
+trois niveaux de priorit&eacute;, affich&eacute;s directement sous forme de badges color&eacute;s
+dans la liste et sur la fiche de l'OF&nbsp;:
 </p>
 <div class="msr-badges">
-<span class="msr-badge msr-badge-forced">Forced</span> Forcé manuellement — toujours réservé en premier, quelle que soit la date.<br><br>
-<span class="msr-badge msr-badge-urgent">Urgent</span> Dans l'horizon configuré (par défaut 30 jours) — réservé par ordre chronologique.<br><br>
-<span class="msr-badge msr-badge-distant">Distant</span> Au-delà de l'horizon — jamais réservé automatiquement, pour ne pas bloquer le stock des OF urgents.
+<span class="msr-badge msr-badge-forced">Forced</span> Forc&eacute; manuellement &mdash; toujours r&eacute;serv&eacute; en premier, quelle que soit la date.<br><br>
+<span class="msr-badge msr-badge-urgent">Urgent</span> Dans l'horizon configur&eacute; (par d&eacute;faut 30 jours) &mdash; r&eacute;serv&eacute; par ordre chronologique.<br><br>
+<span class="msr-badge msr-badge-distant">Distant</span> Au-del&agrave; de l'horizon &mdash; jamais r&eacute;serv&eacute; automatiquement, pour ne pas bloquer le stock des OF urgents.
 </div>
 
-<h3><span class="msr-step-num">1</span>Configurer l'horizon de réservation</h3>
+<h3><span class="msr-step-num">1</span>Configurer l'horizon de r&eacute;servation</h3>
 <p>
-Tout commence par un seul réglage : l'horizon de réservation (en jours), accessible
-depuis Fabrication → Configuration → Paramètres. Tout OF planifié au-delà de cet
-horizon est considéré "Distant" et ne réservera jamais de stock automatiquement.
+Tout commence par un seul r&eacute;glage&nbsp;: l'horizon de r&eacute;servation (en jours), accessible
+depuis Fabrication &rarr; Configuration &rarr; Param&egrave;tres. Tout OF planifi&eacute; au-del&agrave; de cet
+horizon est consid&eacute;r&eacute; "Distant" et ne r&eacute;servera jamais de stock automatiquement.
 </p>
-<img class="msr-img" src="images/01_horizon_config.png" alt="Configuration de l'horizon de réservation dans les paramètres Fabrication">
+<img class="msr-img" width="620" src="images/01_horizon_config.png" alt="Configuration de l'horizon de reservation dans les parametres Fabrication">
 
-<h3><span class="msr-step-num">2</span>Vue d'ensemble : priorités visibles d'un coup d'œil</h3>
+<h3><span class="msr-step-num">2</span>Vue d'ensemble&nbsp;: priorit&eacute;s visibles d'un coup d'&oelig;il</h3>
 <p>
-Dans la liste des ordres de fabrication, chaque OF affiche son badge de priorité.
-Ici, trois OF urgents (échéance proche) et un OF distant (octobre 2026) — le stock
+Dans la liste des ordres de fabrication, chaque OF affiche son badge de priorit&eacute;.
+Ici, trois OF urgents (&eacute;ch&eacute;ance proche) et un OF distant (octobre 2026) &mdash; le stock
 est encore disponible pour tous.
 </p>
-<img class="msr-img" src="images/02_list_initial_badges.png" alt="Liste des ordres de fabrication avec badges de priorité Urgent et Distant">
+<img class="msr-img" width="620" src="images/02_list_initial_badges.png" alt="Liste des ordres de fabrication avec badges de priorite Urgent et Distant">
 
 <h3><span class="msr-step-num">3</span>Un OF urgent, stock disponible</h3>
 <p>
-Sur la fiche d'un OF urgent (WH/MO/00012, dû aujourd'hui), le badge "Urgent" est
-affiché en évidence et le statut des composants est "Disponible" : le stock a
-bien été réservé pour cet OF prioritaire.
+Sur la fiche d'un OF urgent (WH/MO/00012, d&ucirc; aujourd'hui), le badge "Urgent" est
+affich&eacute; en &eacute;vidence et le statut des composants est "Disponible"&nbsp;: le stock a
+bien &eacute;t&eacute; r&eacute;serv&eacute; pour cet OF prioritaire.
 </p>
-<img class="msr-img" src="images/03_mo_urgent_available.png" alt="Fiche d'un ordre de fabrication urgent avec stock disponible">
+<img class="msr-img" width="620" src="images/03_mo_urgent_available.png" alt="Fiche d'un ordre de fabrication urgent avec stock disponible">
 
-<h3><span class="msr-step-num">4</span>Conflit de stock : le module entre en action</h3>
+<h3><span class="msr-step-num">4</span>Conflit de stock&nbsp;: le module entre en action</h3>
 <p>
-Lorsque le stock devient insuffisant pour satisfaire tous les OF confirmés, Smart
-Reservation rééquilibre automatiquement les réservations : les OF urgents passent
-en priorité, même si cela signifie que d'autres OF urgents (mais moins prioritaires
+Lorsque le stock devient insuffisant pour satisfaire tous les OF confirm&eacute;s, Smart
+Reservation r&eacute;&eacute;quilibre automatiquement les r&eacute;servations&nbsp;: les OF urgents passent
+en priorit&eacute;, m&ecirc;me si cela signifie que d'autres OF urgents (mais moins prioritaires
 dans l'ordre chronologique) se retrouvent temporairement "Pas disponible".
 </p>
-<img class="msr-img" src="images/04_list_after_conflict.png" alt="Liste des ordres de fabrication après rééquilibrage en cas de conflit de stock">
+<img class="msr-img" width="620" src="images/04_list_after_conflict.png" alt="Liste des ordres de fabrication apres reequilibrage en cas de conflit de stock">
 
-<h3><span class="msr-step-num">5</span>Réservation partielle sur un OF urgent</h3>
+<h3><span class="msr-step-num">5</span>R&eacute;servation partielle sur un OF urgent</h3>
 <p>
-Sur WH/MO/00010 (urgent, dû dans 15 jours), le statut des composants passe à
-"Pas disponible" : seule une partie du stock requis (35 sur 50 unités) a pu être
-réservée, le reste étant alloué à des OF encore plus prioritaires.
+Sur WH/MO/00010 (urgent, d&ucirc; dans 15 jours), le statut des composants passe &agrave;
+"Pas disponible"&nbsp;: seule une partie du stock requis (35 sur 50 unit&eacute;s) a pu &ecirc;tre
+r&eacute;serv&eacute;e, le reste &eacute;tant allou&eacute; &agrave; des OF encore plus prioritaires.
 </p>
-<img class="msr-img" src="images/05_mo_urgent_partial.png" alt="Ordre de fabrication urgent avec réservation partielle des composants">
+<img class="msr-img" width="620" src="images/05_mo_urgent_partial.png" alt="Ordre de fabrication urgent avec reservation partielle des composants">
 
-<h3><span class="msr-step-num">6</span>Un OF distant qui a besoin de stock en urgence ? Forcez-le</h3>
+<h3><span class="msr-step-num">6</span>Un OF distant qui a besoin de stock en urgence&nbsp;? Forcez-le</h3>
 <p>
-Un client VIP demande une livraison anticipée sur un OF normalement "Distant"
-(WH/MO/00009, planifié pour octobre) ? Le bouton "Force Reservation" — visible
-uniquement sur les OF distants — permet de le faire passer manuellement en
-priorité absolue.
+Un client VIP demande une livraison anticip&eacute;e sur un OF normalement "Distant"
+(WH/MO/00009, planifi&eacute; pour octobre)&nbsp;? Le bouton "Force Reservation" &mdash; visible
+uniquement sur les OF distants &mdash; permet de le faire passer manuellement en
+priorit&eacute; absolue.
 </p>
-<img class="msr-img" src="images/06_mo_distant_force_button.png" alt="Ordre de fabrication distant avec le bouton Force Reservation">
+<img class="msr-img" width="620" src="images/06_mo_distant_force_button.png" alt="Ordre de fabrication distant avec le bouton Force Reservation">
 
-<h3><span class="msr-step-num">7</span>Résultat du forçage manuel</h3>
+<h3><span class="msr-step-num">7</span>R&eacute;sultat du for&ccedil;age manuel</h3>
 <p>
-Une fois forcé, l'OF affiche le badge "Forced" (rouge), le statut des composants
-passe à "Disponible" et le stock nécessaire est intégralement réservé. Un bouton
-"Cancel Forced Reservation" permet de revenir en arrière à tout moment.
+Une fois forc&eacute;, l'OF affiche le badge "Forced" (rouge), le statut des composants
+passe &agrave; "Disponible" et le stock n&eacute;cessaire est int&eacute;gralement r&eacute;serv&eacute;. Un bouton
+"Cancel Forced Reservation" permet de revenir en arri&egrave;re &agrave; tout moment.
 </p>
-<img class="msr-img" src="images/07_mo_forced_result.png" alt="Ordre de fabrication avec badge Forced et stock réservé après forçage manuel">
+<img class="msr-img" width="620" src="images/07_mo_forced_result.png" alt="Ordre de fabrication avec badge Forced et stock reserve apres forcage manuel">
 
-<h3><span class="msr-step-num">8</span>Rééquilibrer à la demande</h3>
+<h3><span class="msr-step-num">8</span>R&eacute;&eacute;quilibrer &agrave; la demande</h3>
 <p>
-Besoin de relancer le moteur de priorité immédiatement, sans attendre le prochain
-cron ou la prochaine confirmation d'OF ? Sélectionnez vos ordres de fabrication
+Besoin de relancer le moteur de priorit&eacute; imm&eacute;diatement, sans attendre le prochain
+cron ou la prochaine confirmation d'OF&nbsp;? S&eacute;lectionnez vos ordres de fabrication
 dans la liste et utilisez l'action "Rebalance Smart Reservations".
 </p>
-<img class="msr-img" src="images/08_rebalance_action.png" alt="Action Rebalance Smart Reservations depuis la liste des ordres de fabrication">
+<img class="msr-img" width="620" src="images/08_rebalance_action.png" alt="Action Rebalance Smart Reservations depuis la liste des ordres de fabrication">
 
 <h2>Fonctionnement automatique</h2>
 <p>
-Le rééquilibrage se déclenche automatiquement dans trois cas :
+Le r&eacute;&eacute;quilibrage se d&eacute;clenche automatiquement dans trois cas&nbsp;:
 </p>
 <ul>
-<li>À chaque confirmation d'un ordre de fabrication</li>
-<li>À chaque exécution du planificateur Odoo</li>
-<li>Chaque nuit à 1h00 via une tâche planifiée (cron)</li>
+<li>&Agrave; chaque confirmation d'un ordre de fabrication</li>
+<li>&Agrave; chaque ex&eacute;cution du planificateur Odoo</li>
+<li>Chaque nuit &agrave; 1h00 via une t&acirc;che planifi&eacute;e (cron)</li>
 </ul>
 <p>
-Aucune intervention manuelle n'est donc nécessaire au quotidien — le moteur tourne
-en arrière-plan et garde vos réservations alignées sur les vraies priorités de
+Aucune intervention manuelle n'est donc n&eacute;cessaire au quotidien &mdash; le moteur tourne
+en arri&egrave;re-plan et garde vos r&eacute;servations align&eacute;es sur les vraies priorit&eacute;s de
 production.
 </p>
 
 <h2>Pourquoi ce module change la donne</h2>
 <table class="msr-table">
 <tr><th>Sans ce module</th><th>Avec MRP Smart Reservation</th></tr>
-<tr><td>Le stock est réservé selon l'ordre de confirmation des OF</td><td>Le stock est réservé selon l'urgence réelle</td></tr>
-<tr><td>Les OF urgents peuvent être bloqués par des OF lointains</td><td>Les OF urgents sont toujours prioritaires</td></tr>
-<tr><td>Réallocation manuelle du stock, tableaux Excel, gestion de crise</td><td>Entièrement automatique, fonctionne en arrière-plan</td></tr>
-<tr><td>Aucune visibilité sur les conflits de réservation</td><td>Badges colorés visibles d'un coup d'œil</td></tr>
+<tr><td>Le stock est r&eacute;serv&eacute; selon l'ordre de confirmation des OF</td><td>Le stock est r&eacute;serv&eacute; selon l'urgence r&eacute;elle</td></tr>
+<tr><td>Les OF urgents peuvent &ecirc;tre bloqu&eacute;s par des OF lointains</td><td>Les OF urgents sont toujours prioritaires</td></tr>
+<tr><td>R&eacute;allocation manuelle du stock, tableaux Excel, gestion de crise</td><td>Enti&egrave;rement automatique, fonctionne en arri&egrave;re-plan</td></tr>
+<tr><td>Aucune visibilit&eacute; sur les conflits de r&eacute;servation</td><td>Badges color&eacute;s visibles d'un coup d'&oelig;il</td></tr>
 </table>
 
 <h2>Informations techniques</h2>
 <ul>
-<li><strong>Compatibilité</strong> : Odoo 18.0, Community &amp; Enterprise</li>
-<li><strong>Dépendances</strong> : <code>mrp</code>, <code>stock</code> uniquement — aucun module supplémentaire requis</li>
-<li><strong>Licence</strong> : OPL-1</li>
-<li><strong>Installation</strong> : aucun nouveau menu, configuration en moins de 2 minutes</li>
+<li><strong>Compatibilit&eacute;</strong>&nbsp;: Odoo 18.0, Community &amp; Enterprise</li>
+<li><strong>D&eacute;pendances</strong>&nbsp;: <code>mrp</code>, <code>stock</code> uniquement &mdash; aucun module suppl&eacute;mentaire requis</li>
+<li><strong>Licence</strong>&nbsp;: OPL-1</li>
+<li><strong>Installation</strong>&nbsp;: aucun nouveau menu, configuration en moins de 2 minutes</li>
 </ul>
 
 <h2>Mise en route</h2>
 <ol>
 <li>Installer le module</li>
-<li>Aller dans Fabrication → Configuration → Paramètres et définir l'horizon de réservation (par défaut 30 jours)</li>
-<li>C'est terminé — le moteur se déclenche automatiquement dès la prochaine confirmation d'OF ou exécution du planificateur</li>
+<li>Aller dans Fabrication &rarr; Configuration &rarr; Param&egrave;tres et d&eacute;finir l'horizon de r&eacute;servation (par d&eacute;faut 30 jours)</li>
+<li>C'est termin&eacute; &mdash; le moteur se d&eacute;clenche automatiquement d&egrave;s la prochaine confirmation d'OF ou ex&eacute;cution du planificateur</li>
 </ol>
 
 </div>
@@ -172,7 +172,7 @@ production.
 <p>
 By default, Odoo reserves stock for Manufacturing Orders (MOs) on a first-confirmed,
 first-served basis. This means an MO scheduled months from now can silently reserve
-components that an urgent MO — due tomorrow — desperately needs. The result:
+components that an urgent MO &mdash; due tomorrow &mdash; desperately needs. The result:
 production delays, last-minute firefighting, and manual stock juggling that nobody
 has time for.
 </p>
@@ -184,26 +184,26 @@ of three priority levels, shown as color-coded badges directly in the MO list an
 form view:
 </p>
 <div class="msr-badges">
-<span class="msr-badge msr-badge-forced">Forced</span> Manually flagged as top priority — always reserved first, regardless of date.<br><br>
-<span class="msr-badge msr-badge-urgent">Urgent</span> Due within your configured horizon (default: 30 days) — reserved in chronological order.<br><br>
-<span class="msr-badge msr-badge-distant">Distant</span> Beyond the horizon — never reserved automatically, so it cannot block stock needed by urgent orders.
+<span class="msr-badge msr-badge-forced">Forced</span> Manually flagged as top priority &mdash; always reserved first, regardless of date.<br><br>
+<span class="msr-badge msr-badge-urgent">Urgent</span> Due within your configured horizon (default: 30 days) &mdash; reserved in chronological order.<br><br>
+<span class="msr-badge msr-badge-distant">Distant</span> Beyond the horizon &mdash; never reserved automatically, so it cannot block stock needed by urgent orders.
 </div>
 
 <h3><span class="msr-step-num">1</span>Set your reservation horizon</h3>
 <p>
 It all starts with one setting: the reservation horizon (in days), found under
-Manufacturing → Configuration → Settings. Any MO scheduled beyond this horizon is
+Manufacturing &rarr; Configuration &rarr; Settings. Any MO scheduled beyond this horizon is
 treated as "Distant" and will never automatically reserve stock.
 </p>
-<img class="msr-img" src="images/01_horizon_config.png" alt="Reservation horizon configuration in Manufacturing settings">
+<img class="msr-img" width="620" src="images/01_horizon_config.png" alt="Reservation horizon configuration in Manufacturing settings">
 
 <h3><span class="msr-step-num">2</span>Overview: priorities visible at a glance</h3>
 <p>
 In the Manufacturing Orders list, every MO shows its priority badge. Here, three
-urgent MOs (due soon) and one distant MO (October 2026) — stock is still available
+urgent MOs (due soon) and one distant MO (October 2026) &mdash; stock is still available
 for all of them.
 </p>
-<img class="msr-img" src="images/02_list_initial_badges.png" alt="Manufacturing orders list with Urgent and Distant priority badges">
+<img class="msr-img" width="620" src="images/02_list_initial_badges.png" alt="Manufacturing orders list with Urgent and Distant priority badges">
 
 <h3><span class="msr-step-num">3</span>An urgent MO, stock available</h3>
 <p>
@@ -211,16 +211,16 @@ On the form of an urgent MO (WH/MO/00012, due today), the "Urgent" badge is
 prominently displayed and the component status reads "Available": stock has been
 successfully reserved for this priority order.
 </p>
-<img class="msr-img" src="images/03_mo_urgent_available.png" alt="Urgent manufacturing order form with available stock">
+<img class="msr-img" width="620" src="images/03_mo_urgent_available.png" alt="Urgent manufacturing order form with available stock">
 
 <h3><span class="msr-step-num">4</span>Stock conflict: the module steps in</h3>
 <p>
 When available stock becomes insufficient to satisfy all confirmed MOs, Smart
 Reservation automatically rebalances reservations: the most urgent MOs take
-priority, even if that means other urgent — but less prioritized — MOs temporarily
+priority, even if that means other urgent &mdash; but less prioritized &mdash; MOs temporarily
 become "Not Available".
 </p>
-<img class="msr-img" src="images/04_list_after_conflict.png" alt="Manufacturing orders list after automatic rebalancing during a stock conflict">
+<img class="msr-img" width="620" src="images/04_list_after_conflict.png" alt="Manufacturing orders list after automatic rebalancing during a stock conflict">
 
 <h3><span class="msr-step-num">5</span>Partial reservation on an urgent MO</h3>
 <p>
@@ -228,15 +228,15 @@ On WH/MO/00010 (urgent, due in 15 days), the component status switches to "Not
 Available": only part of the required stock (35 out of 50 units) could be
 reserved, the rest having been allocated to even higher-priority MOs.
 </p>
-<img class="msr-img" src="images/05_mo_urgent_partial.png" alt="Urgent manufacturing order with partially reserved components">
+<img class="msr-img" width="620" src="images/05_mo_urgent_partial.png" alt="Urgent manufacturing order with partially reserved components">
 
 <h3><span class="msr-step-num">6</span>A distant MO suddenly needs stock urgently? Force it</h3>
 <p>
 A VIP customer requests an early delivery on an MO normally classified as
-"Distant" (WH/MO/00009, scheduled for October)? The "Force Reservation" button —
-visible only on distant MOs — lets you manually bump it to top priority.
+"Distant" (WH/MO/00009, scheduled for October)? The "Force Reservation" button &mdash;
+visible only on distant MOs &mdash; lets you manually bump it to top priority.
 </p>
-<img class="msr-img" src="images/06_mo_distant_force_button.png" alt="Distant manufacturing order with the Force Reservation button">
+<img class="msr-img" width="620" src="images/06_mo_distant_force_button.png" alt="Distant manufacturing order with the Force Reservation button">
 
 <h3><span class="msr-step-num">7</span>Result of a manual override</h3>
 <p>
@@ -244,7 +244,7 @@ Once forced, the MO displays the "Forced" badge (red), the component status
 switches to "Available", and the required stock is fully reserved. A "Cancel
 Forced Reservation" button lets you revert at any time.
 </p>
-<img class="msr-img" src="images/07_mo_forced_result.png" alt="Manufacturing order with Forced badge and reserved stock after manual override">
+<img class="msr-img" width="620" src="images/07_mo_forced_result.png" alt="Manufacturing order with Forced badge and reserved stock after manual override">
 
 <h3><span class="msr-step-num">8</span>Rebalance on demand</h3>
 <p>
@@ -252,7 +252,7 @@ Need to re-run the priority engine immediately, without waiting for the next cro
 run or MO confirmation? Select your Manufacturing Orders in the list and use the
 "Rebalance Smart Reservations" action.
 </p>
-<img class="msr-img" src="images/08_rebalance_action.png" alt="Rebalance Smart Reservations action from the manufacturing orders list">
+<img class="msr-img" width="620" src="images/08_rebalance_action.png" alt="Rebalance Smart Reservations action from the manufacturing orders list">
 
 <h2>How automation works</h2>
 <p>
@@ -264,7 +264,7 @@ Rebalancing is triggered automatically in three cases:
 <li>Every night at 1:00 AM via a scheduled cron job</li>
 </ul>
 <p>
-No manual intervention is needed day-to-day — the engine runs in the background and
+No manual intervention is needed day-to-day &mdash; the engine runs in the background and
 keeps your reservations aligned with real production priorities.
 </p>
 
@@ -280,7 +280,7 @@ keeps your reservations aligned with real production priorities.
 <h2>Technical details</h2>
 <ul>
 <li><strong>Compatible with</strong>: Odoo 18.0, Community &amp; Enterprise</li>
-<li><strong>Dependencies</strong>: <code>mrp</code>, <code>stock</code> only — no extra modules required</li>
+<li><strong>Dependencies</strong>: <code>mrp</code>, <code>stock</code> only &mdash; no extra modules required</li>
 <li><strong>License</strong>: OPL-1</li>
 <li><strong>Setup</strong>: no new menus, ready in under 2 minutes</li>
 </ul>
@@ -288,13 +288,13 @@ keeps your reservations aligned with real production priorities.
 <h2>Getting started</h2>
 <ol>
 <li>Install the module</li>
-<li>Go to Manufacturing → Configuration → Settings and set your reservation horizon (default: 30 days)</li>
-<li>That's it — the engine runs automatically from your next MO confirmation or scheduler run</li>
+<li>Go to Manufacturing &rarr; Configuration &rarr; Settings and set your reservation horizon (default: 30 days)</li>
+<li>That's it &mdash; the engine runs automatically from your next MO confirmation or scheduler run</li>
 </ol>
 
 </div>
 
-<div class="msr-footer">MRP Smart Reservation — Odoo 18.0</div>
+<div class="msr-footer">MRP Smart Reservation &mdash; Odoo 18.0</div>
 
 </div>
 </section>
