@@ -1,11 +1,11 @@
 <section class="oe_container">
 <style>
-.msr-wrap { max-width: 620px; margin: 0 auto; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #2d2d2d; line-height: 1.6; }
+.msr-wrap { max-width: 900px; margin: 0 auto; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #2d2d2d; line-height: 1.6; }
 .msr-wrap h1 { font-size: 28px; margin-bottom: 4px; }
 .msr-wrap h2 { font-size: 20px; margin-top: 36px; margin-bottom: 10px; border-bottom: 2px solid #875A7B; padding-bottom: 6px; }
 .msr-wrap h3 { font-size: 17px; margin-top: 22px; margin-bottom: 8px; }
 .msr-tagline { font-size: 16px; color: #6b6b6b; margin-bottom: 24px; }
-.msr-img { max-width: 620px; width: 620px; height: auto; border: 1px solid #e0e0e0; border-radius: 6px; margin: 10px auto 20px auto; display: block; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.msr-img { max-width: 900px; width: 900px; height: auto; border: 1px solid #e0e0e0; border-radius: 6px; margin: 10px auto 20px auto; display: block; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
 .msr-badges { margin: 16px 0; }
 .msr-badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: 600; font-size: 13px; color: #fff; margin-right: 8px; }
 .msr-badge-forced { background: #d9534f; }
@@ -56,71 +56,71 @@ dans la liste et sur la fiche de l'OF&nbsp;:
 <span class="msr-badge msr-badge-distant">Distant</span> Au-del&agrave; de l'horizon &mdash; jamais r&eacute;serv&eacute; automatiquement, pour ne pas bloquer le stock des OF urgents.
 </div>
 
-<h3><span class="msr-step-num">1</span>Configurer l'horizon de r&eacute;servation</h3>
+<h3>1. Configurer l'horizon de r&eacute;servation</h3>
 <p>
 Tout commence par un seul r&eacute;glage&nbsp;: l'horizon de r&eacute;servation (en jours), accessible
 depuis Fabrication &rarr; Configuration &rarr; Param&egrave;tres. Tout OF planifi&eacute; au-del&agrave; de cet
 horizon est consid&eacute;r&eacute; "Distant" et ne r&eacute;servera jamais de stock automatiquement.
 </p>
-<img class="msr-img" width="620" src="images/01_horizon_config.png" alt="Configuration de l'horizon de reservation dans les parametres Fabrication">
+<img class="msr-img" width="900" src="images/01_horizon_config.png" alt="Configuration de l'horizon de reservation dans les parametres Fabrication">
 
-<h3><span class="msr-step-num">2</span>Vue d'ensemble&nbsp;: priorit&eacute;s visibles d'un coup d'&oelig;il</h3>
+<h3>2. Vue d'ensemble&nbsp;: priorit&eacute;s visibles d'un coup d'&oelig;il</h3>
 <p>
 Dans la liste des ordres de fabrication, chaque OF affiche son badge de priorit&eacute;.
 Ici, trois OF urgents (&eacute;ch&eacute;ance proche) et un OF distant (octobre 2026) &mdash; le stock
 est encore disponible pour tous.
 </p>
-<img class="msr-img" width="620" src="images/02_list_initial_badges.png" alt="Liste des ordres de fabrication avec badges de priorite Urgent et Distant">
+<img class="msr-img" width="900" src="images/02_list_initial_badges.png" alt="Liste des ordres de fabrication avec badges de priorite Urgent et Distant">
 
-<h3><span class="msr-step-num">3</span>Un OF urgent, stock disponible</h3>
+<h3>3. Un OF urgent, stock disponible</h3>
 <p>
 Sur la fiche d'un OF urgent (WH/MO/00012, d&ucirc; aujourd'hui), le badge "Urgent" est
 affich&eacute; en &eacute;vidence et le statut des composants est "Disponible"&nbsp;: le stock a
 bien &eacute;t&eacute; r&eacute;serv&eacute; pour cet OF prioritaire.
 </p>
-<img class="msr-img" width="620" src="images/03_mo_urgent_available.png" alt="Fiche d'un ordre de fabrication urgent avec stock disponible">
+<img class="msr-img" width="900" src="images/03_mo_urgent_available.png" alt="Fiche d'un ordre de fabrication urgent avec stock disponible">
 
-<h3><span class="msr-step-num">4</span>Conflit de stock&nbsp;: le module entre en action</h3>
+<h3>4. Conflit de stock&nbsp;: le module entre en action</h3>
 <p>
 Lorsque le stock devient insuffisant pour satisfaire tous les OF confirm&eacute;s, Smart
 Reservation r&eacute;&eacute;quilibre automatiquement les r&eacute;servations&nbsp;: les OF urgents passent
 en priorit&eacute;, m&ecirc;me si cela signifie que d'autres OF urgents (mais moins prioritaires
 dans l'ordre chronologique) se retrouvent temporairement "Pas disponible".
 </p>
-<img class="msr-img" width="620" src="images/04_list_after_conflict.png" alt="Liste des ordres de fabrication apres reequilibrage en cas de conflit de stock">
+<img class="msr-img" width="900" src="images/04_list_after_conflict.png" alt="Liste des ordres de fabrication apres reequilibrage en cas de conflit de stock">
 
-<h3><span class="msr-step-num">5</span>R&eacute;servation partielle sur un OF urgent</h3>
+<h3>5. R&eacute;servation partielle sur un OF urgent</h3>
 <p>
 Sur WH/MO/00010 (urgent, d&ucirc; dans 15 jours), le statut des composants passe &agrave;
 "Pas disponible"&nbsp;: seule une partie du stock requis (35 sur 50 unit&eacute;s) a pu &ecirc;tre
 r&eacute;serv&eacute;e, le reste &eacute;tant allou&eacute; &agrave; des OF encore plus prioritaires.
 </p>
-<img class="msr-img" width="620" src="images/05_mo_urgent_partial.png" alt="Ordre de fabrication urgent avec reservation partielle des composants">
+<img class="msr-img" width="900" src="images/05_mo_urgent_partial.png" alt="Ordre de fabrication urgent avec reservation partielle des composants">
 
-<h3><span class="msr-step-num">6</span>Un OF distant qui a besoin de stock en urgence&nbsp;? Forcez-le</h3>
+<h3>6. Un OF distant qui a besoin de stock en urgence&nbsp;? Forcez-le</h3>
 <p>
 Un client VIP demande une livraison anticip&eacute;e sur un OF normalement "Distant"
 (WH/MO/00009, planifi&eacute; pour octobre)&nbsp;? Le bouton "Force Reservation" &mdash; visible
 uniquement sur les OF distants &mdash; permet de le faire passer manuellement en
 priorit&eacute; absolue.
 </p>
-<img class="msr-img" width="620" src="images/06_mo_distant_force_button.png" alt="Ordre de fabrication distant avec le bouton Force Reservation">
+<img class="msr-img" width="900" src="images/06_mo_distant_force_button.png" alt="Ordre de fabrication distant avec le bouton Force Reservation">
 
-<h3><span class="msr-step-num">7</span>R&eacute;sultat du for&ccedil;age manuel</h3>
+<h3>7. R&eacute;sultat du for&ccedil;age manuel</h3>
 <p>
 Une fois forc&eacute;, l'OF affiche le badge "Forced" (rouge), le statut des composants
 passe &agrave; "Disponible" et le stock n&eacute;cessaire est int&eacute;gralement r&eacute;serv&eacute;. Un bouton
 "Cancel Forced Reservation" permet de revenir en arri&egrave;re &agrave; tout moment.
 </p>
-<img class="msr-img" width="620" src="images/07_mo_forced_result.png" alt="Ordre de fabrication avec badge Forced et stock reserve apres forcage manuel">
+<img class="msr-img" width="900" src="images/07_mo_forced_result.png" alt="Ordre de fabrication avec badge Forced et stock reserve apres forcage manuel">
 
-<h3><span class="msr-step-num">8</span>R&eacute;&eacute;quilibrer &agrave; la demande</h3>
+<h3>8. R&eacute;&eacute;quilibrer &agrave; la demande</h3>
 <p>
 Besoin de relancer le moteur de priorit&eacute; imm&eacute;diatement, sans attendre le prochain
 cron ou la prochaine confirmation d'OF&nbsp;? S&eacute;lectionnez vos ordres de fabrication
 dans la liste et utilisez l'action "Rebalance Smart Reservations".
 </p>
-<img class="msr-img" width="620" src="images/08_rebalance_action.png" alt="Action Rebalance Smart Reservations depuis la liste des ordres de fabrication">
+<img class="msr-img" width="900" src="images/08_rebalance_action.png" alt="Action Rebalance Smart Reservations depuis la liste des ordres de fabrication">
 
 <h2>Fonctionnement automatique</h2>
 <p>
@@ -189,70 +189,70 @@ form view:
 <span class="msr-badge msr-badge-distant">Distant</span> Beyond the horizon &mdash; never reserved automatically, so it cannot block stock needed by urgent orders.
 </div>
 
-<h3><span class="msr-step-num">1</span>Set your reservation horizon</h3>
+<h3>1. Set your reservation horizon</h3>
 <p>
 It all starts with one setting: the reservation horizon (in days), found under
 Manufacturing &rarr; Configuration &rarr; Settings. Any MO scheduled beyond this horizon is
 treated as "Distant" and will never automatically reserve stock.
 </p>
-<img class="msr-img" width="620" src="images/01_horizon_config.png" alt="Reservation horizon configuration in Manufacturing settings">
+<img class="msr-img" width="900" src="images/01_horizon_config.png" alt="Reservation horizon configuration in Manufacturing settings">
 
-<h3><span class="msr-step-num">2</span>Overview: priorities visible at a glance</h3>
+<h3>2. Overview: priorities visible at a glance</h3>
 <p>
 In the Manufacturing Orders list, every MO shows its priority badge. Here, three
 urgent MOs (due soon) and one distant MO (October 2026) &mdash; stock is still available
 for all of them.
 </p>
-<img class="msr-img" width="620" src="images/02_list_initial_badges.png" alt="Manufacturing orders list with Urgent and Distant priority badges">
+<img class="msr-img" width="900" src="images/02_list_initial_badges.png" alt="Manufacturing orders list with Urgent and Distant priority badges">
 
-<h3><span class="msr-step-num">3</span>An urgent MO, stock available</h3>
+<h3>3. An urgent MO, stock available</h3>
 <p>
 On the form of an urgent MO (WH/MO/00012, due today), the "Urgent" badge is
 prominently displayed and the component status reads "Available": stock has been
 successfully reserved for this priority order.
 </p>
-<img class="msr-img" width="620" src="images/03_mo_urgent_available.png" alt="Urgent manufacturing order form with available stock">
+<img class="msr-img" width="900" src="images/03_mo_urgent_available.png" alt="Urgent manufacturing order form with available stock">
 
-<h3><span class="msr-step-num">4</span>Stock conflict: the module steps in</h3>
+<h3>4. Stock conflict: the module steps in</h3>
 <p>
 When available stock becomes insufficient to satisfy all confirmed MOs, Smart
 Reservation automatically rebalances reservations: the most urgent MOs take
 priority, even if that means other urgent &mdash; but less prioritized &mdash; MOs temporarily
 become "Not Available".
 </p>
-<img class="msr-img" width="620" src="images/04_list_after_conflict.png" alt="Manufacturing orders list after automatic rebalancing during a stock conflict">
+<img class="msr-img" width="900" src="images/04_list_after_conflict.png" alt="Manufacturing orders list after automatic rebalancing during a stock conflict">
 
-<h3><span class="msr-step-num">5</span>Partial reservation on an urgent MO</h3>
+<h3>5. Partial reservation on an urgent MO</h3>
 <p>
 On WH/MO/00010 (urgent, due in 15 days), the component status switches to "Not
 Available": only part of the required stock (35 out of 50 units) could be
 reserved, the rest having been allocated to even higher-priority MOs.
 </p>
-<img class="msr-img" width="620" src="images/05_mo_urgent_partial.png" alt="Urgent manufacturing order with partially reserved components">
+<img class="msr-img" width="900" src="images/05_mo_urgent_partial.png" alt="Urgent manufacturing order with partially reserved components">
 
-<h3><span class="msr-step-num">6</span>A distant MO suddenly needs stock urgently? Force it</h3>
+<h3>6. A distant MO suddenly needs stock urgently? Force it</h3>
 <p>
 A VIP customer requests an early delivery on an MO normally classified as
 "Distant" (WH/MO/00009, scheduled for October)? The "Force Reservation" button &mdash;
 visible only on distant MOs &mdash; lets you manually bump it to top priority.
 </p>
-<img class="msr-img" width="620" src="images/06_mo_distant_force_button.png" alt="Distant manufacturing order with the Force Reservation button">
+<img class="msr-img" width="900" src="images/06_mo_distant_force_button.png" alt="Distant manufacturing order with the Force Reservation button">
 
-<h3><span class="msr-step-num">7</span>Result of a manual override</h3>
+<h3>7. Result of a manual override</h3>
 <p>
 Once forced, the MO displays the "Forced" badge (red), the component status
 switches to "Available", and the required stock is fully reserved. A "Cancel
 Forced Reservation" button lets you revert at any time.
 </p>
-<img class="msr-img" width="620" src="images/07_mo_forced_result.png" alt="Manufacturing order with Forced badge and reserved stock after manual override">
+<img class="msr-img" width="900" src="images/07_mo_forced_result.png" alt="Manufacturing order with Forced badge and reserved stock after manual override">
 
-<h3><span class="msr-step-num">8</span>Rebalance on demand</h3>
+<h3>8. Rebalance on demand</h3>
 <p>
 Need to re-run the priority engine immediately, without waiting for the next cron
 run or MO confirmation? Select your Manufacturing Orders in the list and use the
 "Rebalance Smart Reservations" action.
 </p>
-<img class="msr-img" width="620" src="images/08_rebalance_action.png" alt="Rebalance Smart Reservations action from the manufacturing orders list">
+<img class="msr-img" width="900" src="images/08_rebalance_action.png" alt="Rebalance Smart Reservations action from the manufacturing orders list">
 
 <h2>How automation works</h2>
 <p>
